@@ -25,7 +25,10 @@ difficult. I decided to write some code to list out all the possible token
 combinations based on which parts we knew and what the missing characters
 sort of look like. Hopefully this works and one of the generated tokens is
 the one for his game, because I promised I would buy a new copy if it
-doesn't :'\ */
+doesn't :'\ 
+
+UPDATE: IT WORKED BABY!!! One of the codes in the second most likely group
+was correct, so my program did its job :) */
 
 //these are chunks of the download token we can clearly identify
 var chunk1 = "6WGWPPJ6VGV";
@@ -40,36 +43,39 @@ var third = ["R","B"];
 var fourth = ["R","B","P"];
 var fifth = ["P","R","B"];
 
-var text = "";
+var counter = 0; // number of tokens generated
 
-var counter = 0;
-
+// try out all possible chars in array
 for (i = 0; i < first.length; i++) { 
 
+	/* appending currently guessed first unidentifiable char to identifiable 
+	first chunk */
     var un = chunk1 + first[i];
 
     for (j = 0; j < second.length; j++) {
 
-    	deux = un + second[j];
+    	var deux = un + second[j]; 
 
     	for (k = 0; k < third.length; k++) {
  
-    		trois = deux + third[k] + chunk2;
+    		var trois = deux + third[k] + chunk2;
 
     		for (l = 0; l < fourth.length; l++) {
 
-    			quatre = trois + fourth[l] + chunk3;
+    			var quatre = trois + fourth[l] + chunk3;
 
     			for (m = 0; m < fifth.length; m++) {
 
                     counter++;
 
-                    cinq = quatre + fifth[m] + chunk4 + "<br>";
+                    // complete this token
+                    var cinq = quatre + fifth[m] + chunk4 + "<br>";
 
-    				val = i + j + k + l + m;
+    				var group = i + j + k + l + m;
 
-    				switch(val) {
+    				switch(group) {
 
+    					// grouping tokens by likelihood
                         case 0:
                             document.getElementById("nula").innerHTML 
                                 += cinq;
