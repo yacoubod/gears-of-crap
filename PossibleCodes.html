@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1>Possible Codes</h1>
+
+<p id = "count"></p>
+<p id = "nula"></p>
+<p id = "jedan"></p>
+<p id = "dva"></p>
+<p id = "tri"></p>
+<p id = "cetri"></p>
+<p id = "pet"></p>
+<p id = "sest"></p>
+<p id = "sedam"></p>
+
+<script>
+
+/* So my roommate Sergey purchased an Xbox One that came with Gears of War:
+Ultimate Edition as a free download. I had a pair of scissors on my desk so
+I began to scratch the token card to reveal the token. I quickly noticed I
+was scratching too hard because I began scratching off parts of the 25 digit
+code! We started trying to decipher what was left but realized it would be
+difficult. I decided to write some code to list out all the possible token
+combinations based on which parts we knew and what the missing characters
+sort of look like. Hopefully this works and one of the generated tokens is
+the one for his game, because I promised I would buy a new copy if it
+doesn't :'\ */
+
+//these are chunks of the download token we can clearly identify
+var chunk1 = "6WGWPPJ6VGV";
+var chunk2 = "T";
+var chunk3 = "TC";
+var chunk4 = "X3HXGZ";
+
+//these are the characters which are not clearly identifiable
+var first = ["2","X"];
+var second = ["8","Q"];
+var third = ["R","B"];
+var fourth = ["R","B","P"];
+var fifth = ["P","R","B"];
+
+var text = "";
+
+var counter = 0;
+
+for (i = 0; i < first.length; i++) { 
+
+    var un = chunk1 + first[i];
+
+    for (j = 0; j < second.length; j++) {
+
+    	deux = un + second[j];
+
+    	for (k = 0; k < third.length; k++) {
+ 
+    		trois = deux + third[k] + chunk2;
+
+    		for (l = 0; l < fourth.length; l++) {
+
+    			quatre = trois + fourth[l] + chunk3;
+
+    			for (m = 0; m < fifth.length; m++) {
+
+                    counter++;
+
+                    cinq = quatre + fifth[m] + chunk4 + "<br>";
+
+    				val = i + j + k + l + m;
+
+    				switch(val) {
+
+                        case 0:
+                            document.getElementById("nula").innerHTML 
+                                += cinq;
+                            break;
+
+                        case 1:
+                            document.getElementById("jedan").innerHTML 
+                                += cinq;
+                            break;
+
+                        case 2:
+                            document.getElementById("dva").innerHTML 
+                                += cinq;
+                            break;
+
+                        case 3:
+                            document.getElementById("tri").innerHTML 
+                                += cinq;
+                            break;
+
+                        case 4:
+                            document.getElementById("cetri").innerHTML 
+                                += cinq;
+                            break;
+
+                        case 5:
+                            document.getElementById("pet").innerHTML 
+                                += cinq;
+                            break;
+
+                        case 6:
+                            document.getElementById("sest").innerHTML 
+                                += cinq;
+                            break;
+
+                        case 7:
+                            document.getElementById("sedam").innerHTML 
+                                += cinq;
+                            break;
+
+                    }
+
+    			}
+
+    		}
+
+    	}
+
+    }
+
+}
+
+document.getElementById("count").innerHTML = counter + 
+    " possible tokens grouped by likelihood";
+    
+</script>
+
+
+</body>
+</html> 
